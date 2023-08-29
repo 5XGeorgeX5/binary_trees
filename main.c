@@ -1,36 +1,23 @@
 #include <stdlib.h>
-#include <stdio.h>
 #include "binary_trees.h"
 
 /**
  * main - Entry point
  *
- * Return: Always 0 (Success)
+ * Return: 0 on success, error code on failure
  */
 int main(void)
 {
-	bst_t *root;
-	bst_t *node;
+    bst_t *tree;
+    int array[] = {
+        79, 47, 68, 87, 84, 91, 21, 32, 34, 2,
+        20, 22, 98, 1, 62, 95
+    };
+    size_t n = sizeof(array) / sizeof(array[0]);
 
-	root = NULL;
-	node = bst_insert(&root, 98);
-	printf("Inserted: %d\n", node->n);
-	node = bst_insert(&root, 402);
-	printf("Inserted: %d\n", node->n);
-	node = bst_insert(&root, 12);
-	printf("Inserted: %d\n", node->n);
-	node = bst_insert(&root, 46);
-	printf("Inserted: %d\n", node->n);
-	node = bst_insert(&root, 128);
-	printf("Inserted: %d\n", node->n);
-	node = bst_insert(&root, 256);
-	printf("Inserted: %d\n", node->n);
-	node = bst_insert(&root, 512);
-	printf("Inserted: %d\n", node->n);
-	node = bst_insert(&root, 1);
-	printf("Inserted: %d\n", node->n);
-	node = bst_insert(&root, 128);
-	printf("Node should be nil -> %p\n", (void *)node);
-	binary_tree_print(root);
-	return (0);
+    tree = array_to_bst(array, n);
+    if (!tree)
+        return (1);
+    binary_tree_print(tree);
+    return (0);
 }
