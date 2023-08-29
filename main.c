@@ -5,41 +5,26 @@
 /**
  * main - Entry point
  *
- * Return: Always 0 (Success)
+ * Return: 0 on success, error code on failure
  */
 int main(void)
 {
-    binary_tree_t *root;
-    int complete;
+	binary_tree_t *root;
 
-    root = binary_tree_node(NULL, 98);
-    root->left = binary_tree_node(root, 12);
-    root->right = binary_tree_node(root, 128);
-    root->left->right = binary_tree_node(root->left, 54);
-    root->right->right = binary_tree_node(root, 402);
-    root->left->left = binary_tree_node(root->left, 10);
+	root = binary_tree_node(NULL, 98);
+	root->right = binary_tree_node(root, 128);
+	root->right->right = binary_tree_node(root->right, 402);
+	binary_tree_print(root);
+	printf("Rotate-left %d\n", root->n);
+	root = binary_tree_rotate_left(root);
+	binary_tree_print(root);
+	printf("\n");
 
-    binary_tree_print(root);
-    complete = binary_tree_is_complete(root);
-    printf("Is %d complete: %d\n", root->n, complete);
-    complete = binary_tree_is_complete(root->left);
-    printf("Is %d complete: %d\n", root->left->n, complete);
-
-    root->right->left = binary_tree_node(root->right, 112);
-    binary_tree_print(root);
-    complete = binary_tree_is_complete(root);
-    printf("Is %d complete: %d\n", root->n, complete);
-
-    root->left->left->left = binary_tree_node(root->left->left, 8);
-    binary_tree_print(root);
-    complete = binary_tree_is_complete(root);
-    printf("Is %d complete: %d\n", root->n, complete);
-
-    root->left->right->left = binary_tree_node(root->left->right, 23);
-    binary_tree_print(root);
-    complete = binary_tree_is_complete(root);
-    printf("Is %d complete: %d\n", root->n, complete);
-
-    binary_tree_delete(root);
-    return (0);
+	root->right->right = binary_tree_node(root->right, 450);
+	root->right->left = binary_tree_node(root->right, 420);
+	binary_tree_print(root);
+	printf("Rotate-left %d\n", root->n);
+	root = binary_tree_rotate_left(root);
+	binary_tree_print(root);
+	return (0);
 }
