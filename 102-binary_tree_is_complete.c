@@ -26,11 +26,11 @@ size_t bi_size(const binary_tree_t *tree)
 int is_complete(const binary_tree_t *tree, size_t index, size_t size)
 {
 	if (tree == NULL)
-        return (1);
-    if (index >= size)
-        return (0);
-    return (is_complete(tree->left, 2 * index + 1, size) &&
-            is_complete(tree->right, 2 * index + 2, size));
+		return (1);
+	if (index >= size)
+		return (0);
+	return (is_complete(tree->left, 2 * index + 1, size) &&
+		is_complete(tree->right, 2 * index + 2, size));
 }
 
 /**
@@ -41,7 +41,7 @@ int is_complete(const binary_tree_t *tree, size_t index, size_t size)
 int binary_tree_is_complete(const binary_tree_t *tree)
 {
 	if (tree == NULL)
-		return 0;
-	
-	return is_complete(tree, 0, bi_size(tree));
+		return (0);
+
+	return (is_complete(tree, 0, bi_size(tree)));
 }
