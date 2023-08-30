@@ -14,10 +14,7 @@ avl_t *insert_node(avl_t **tree, int value)
 	if (new_node == NULL)
 		return (NULL);
 	if (*tree == NULL)
-	{
-		*tree = new_node;
-		return (new_node);
-	}
+		return (*tree = new_node);
 	while (1)
 	{
 		if (value < it->n)
@@ -43,7 +40,10 @@ avl_t *insert_node(avl_t **tree, int value)
 			}
 		}
 		else
+		{
+			free(new_node);
 			return (NULL);
+		}
 	}
 	return (new_node);
 }
