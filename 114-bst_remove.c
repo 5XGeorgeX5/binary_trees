@@ -30,17 +30,17 @@ bst_t *check(bst_t *root, bst_t *node, bst_t *d1)
 {
 	if (d1 == NULL)
 	{
-		if (node == root)
-		{
-			free(node);
-			return (NULL);
-		}
-		else
+		if (node->parent)
 		{
 			if (node->parent->left == node)
 				node->parent->left = NULL;
 			else
 				node->parent->right = NULL;
+		}
+		if (node == root)
+			free(node);
+		else
+		{
 			free(node);
 			return (root);
 		}
@@ -48,6 +48,13 @@ bst_t *check(bst_t *root, bst_t *node, bst_t *d1)
 	else
 	{
 		d1->parent = node->parent;
+		if (node->parent)
+		{
+			if (node->parent->left == node)
+				node->parent->left = d1;
+			else
+				node->parent->right = d1;
+		}
 		if (node == root)
 		{
 			free(node);
@@ -55,10 +62,6 @@ bst_t *check(bst_t *root, bst_t *node, bst_t *d1)
 		}
 		else
 		{
-			if (node->parent->left == node)
-				node->parent->left = d1;
-			else
-				node->parent->right = d1;
 			free(node);
 			return (root);
 		}
@@ -86,10 +89,18 @@ bst_t *bst_remove(bst_t *root, int value)
 	if (node->right == NULL)
 		return (check(root, node, node->left));
 	new_root = node->right;
-	while (new_root->left)
-		new_root = new_root->left;
+	if (new_root->left)
+	{
+		while (new_root->left)
+			new_root = new_root->left;
+		new_root->parent->left = NULL;
+	}
+	else
+	{
+		new_root->right->parent = node;
+		node->right = new_root->right;
+	}
 	node->n = new_root->n;
-	new_root->parent->left = NULL;
 	free(new_root);
 	return (root);
 }
