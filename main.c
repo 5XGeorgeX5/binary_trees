@@ -9,28 +9,33 @@
  */
 int main(void)
 {
-	bst_t *tree;
-	int array[] = {
-		10, 9, 8, 7, 11, 12, 13
-	};
-	size_t n = sizeof(array) / sizeof(array[0]);
+    avl_t *root;
+    avl_t *node;
 
-	tree = array_to_bst(array, n);
-	if (!tree)
-		return (1);
-	binary_tree_print(tree);
-
-	tree = bst_remove(tree, 10);
-	printf("Removed 10...\n");
-	binary_tree_print(tree);
-
-	tree = bst_remove(tree, 7);
-	printf("Removed 7...\n");
-	binary_tree_print(tree);
-
-	tree = bst_remove(tree, 9);
-	printf("Removed 9...\n");
-	binary_tree_print(tree);
-	binary_tree_delete(tree);
-	return (0);
+    root = NULL;
+    node = avl_insert(&root, 98);
+    printf("Inserted: %d\n", node->n);
+    binary_tree_print(root);
+    node = avl_insert(&root, 402);
+    printf("\nInserted: %d\n", node->n);
+    binary_tree_print(root);
+    node = avl_insert(&root, 12);
+    printf("\nInserted: %d\n", node->n);
+    binary_tree_print(root);
+    node = avl_insert(&root, 46);
+    printf("\nInserted: %d\n", node->n);
+    binary_tree_print(root);
+    node = avl_insert(&root, 128);
+    printf("\nInserted: %d\n", node->n);
+    binary_tree_print(root);
+    node = avl_insert(&root, 256);
+    printf("\nInserted: %d\n", node->n);
+    binary_tree_print(root);
+    node = avl_insert(&root, 512);
+    printf("\nInserted: %d\n", node->n);
+    binary_tree_print(root);
+    node = avl_insert(&root, 50);
+    printf("\nInserted: %d\n", node->n);
+    binary_tree_print(root);
+    return (0);
 }
