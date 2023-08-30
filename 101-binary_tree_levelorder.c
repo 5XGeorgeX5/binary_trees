@@ -37,7 +37,7 @@ void do_func(const binary_tree_t *tree, int level, void (*func)(int))
 }
 
 /**
- * binary_tree_levelorder - goes through a binary tree using
+ * binary_tree_levelorder - goes through a binary tree using level-order
  * @tree: the address of the root node
  * @func: is a pointer to a function to call for each node
 */

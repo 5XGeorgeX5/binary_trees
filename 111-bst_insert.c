@@ -1,7 +1,7 @@
 #include "binary_trees.h"
 
 /**
- * bst_insert - goes through a binary tree using postorder traversal
+ * bst_insert - insert a new node into a bst
  * @tree: the address of the root node
  * @value: the function to apply
  * Return: the address of the new node

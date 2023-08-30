@@ -18,7 +18,7 @@ size_t bi_height(const binary_tree_t *tree)
 }
 
 /**
- * binary_tree_balance - measures the number of leaves in a binary tree
+ * binary_tree_balance - measures the balance factor in a binary tree
  * @tree: the address of the root node
  * Return: the balance factor
 */
