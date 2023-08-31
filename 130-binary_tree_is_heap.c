@@ -34,19 +34,6 @@ int is_complete(const binary_tree_t *tree, size_t index, size_t size)
 }
 
 /**
- * bi_complete - checks if a binary tree is complete
- * @tree: the address of the root node
- * Return: 0, 1
-*/
-int bi_complete(const binary_tree_t *tree)
-{
-	if (tree == NULL)
-		return (0);
-
-	return (is_complete(tree, 0, bi_size(tree)));
-}
-
-/**
  * check - check  if a tree is heap
  * @tree: the address of the root node
  * Return: 0, 1
@@ -55,7 +42,7 @@ int check(const binary_tree_t *tree)
 {
 	if (tree == NULL)
 		return (1);
-	if (tree->parent != NULL && (tree->n < tree->parent->n))
+	if (tree->n > tree->parent->n)
 		return (0);
 	return (check(tree->left) && check(tree->right));
 }
@@ -69,7 +56,7 @@ int binary_tree_is_heap(const binary_tree_t *tree)
 {
 	if (tree == NULL)
 		return (0);
-	if (bi_complete(tree) == 0)
+	if (is_complete(tree, 0, bi_size(tree)) == 0)
 		return (0);
-	return (check(tree));
+	return (check(tree->left) && check(tree->right));
 }
