@@ -71,7 +71,7 @@ avl_t *save_balance(avl_t *node, int value)
 		else if (balance < -1)
 		{
 			if (node->right->n > value)
-				node->right = binary_tree_rotate_right(node->left);
+				node->right = binary_tree_rotate_right(node->right);
 			node = binary_tree_rotate_left(node);
 		}
 	}
