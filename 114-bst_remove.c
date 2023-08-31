@@ -97,7 +97,8 @@ bst_t *bst_remove(bst_t *root, int value)
 	}
 	else
 	{
-		new_root->right->parent = node;
+		if (new_root->right)
+			new_root->right->parent = node;
 		node->right = new_root->right;
 	}
 	node->n = new_root->n;
