@@ -63,14 +63,17 @@ avl_t *avl_balance(avl_t *node)
 {
 	int balance;
 
-	while (node->parent)
+	while (1)
 	{
 		balance = binary_tree_balance(node);
 		if (balance > 1)
 			node = binary_tree_rotate_right(node);
 		else if (balance < -1)
 			node = binary_tree_rotate_left(node);
-		node = node->parent;
+		if (node->parent)
+			node = node->parent;
+		else
+			break;
 	}
 	return (node);
 }
