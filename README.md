@@ -1,1 +1,1 @@
-This is a group project about binary trees
+working on trees using c++
